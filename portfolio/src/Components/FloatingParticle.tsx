@@ -1,7 +1,7 @@
 // components/FloatingParticlesBackground.tsx
-'use client';
+"use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
 const FloatingParticlesBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -10,7 +10,7 @@ const FloatingParticlesBackground: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d')!;
+    const ctx = canvas.getContext("2d")!;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
@@ -24,9 +24,9 @@ const FloatingParticlesBackground: React.FC = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = 'rgba(0, 224, 255, 0.3)';
+      ctx.fillStyle = "rgba(0, 224, 255, 0.3)";
 
-      particles.forEach(p => {
+      particles.forEach((p) => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
@@ -48,21 +48,21 @@ const FloatingParticlesBackground: React.FC = () => {
       height = canvas.height = window.innerHeight;
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
       style={{
-        position: 'fixed',
+        position: "fixed",
         top: 0,
         left: 0,
         zIndex: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
+        width: "100%",
+        height: "100%",
+        pointerEvents: "none",
       }}
     />
   );

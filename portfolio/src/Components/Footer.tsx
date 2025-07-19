@@ -6,7 +6,7 @@ const Footer: React.FC = () => (
         color: '#fff',
         textAlign: 'center',
         padding: '1rem 0',
-        position: 'fixed',
+        position: 'static',
         width: '100%',
         bottom: 0,
         left: 0

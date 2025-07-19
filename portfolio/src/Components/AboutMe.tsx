@@ -1,10 +1,39 @@
+
 'use client';
 
 import React from 'react';
-import { Box, Typography, useTheme, useMediaQuery } from '@mui/material';
-import { motion } from 'framer-motion';
+import {
+  Box,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from '@mui/material';
+import { motion, useAnimation, Easing } from 'framer-motion';
 import Image from 'next/image';
-import heroImg from '../../public/hero2.jpg'; // Ensure this image is inside the /public folder
+import heroImg from '../../public/hero2.jpg';
+const floatAnimation = {
+  animate: {
+    y: [0, -3, 3, -2, 2, 0],
+    x: [0, 2, -2, 1, -1, 0],
+    rotate: [0, 1, -1, 0.5, -0.5, 0], 
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: [0.42, 0, 0.58, 1], 
+    },
+  },
+};
+
+
+const AnimatedWord = ({ children }: { children: string }) => (
+  <motion.span
+    // variants={floatAnimation}
+    animate="animate"
+    style={{ display: 'inline-block' }}
+  >
+    {children}
+  </motion.span>
+);
 
 const AboutMe: React.FC = () => {
   const theme = useTheme();
@@ -83,20 +112,21 @@ const AboutMe: React.FC = () => {
           </Typography>
 
           <Typography variant="body1">
-            👋 Hi! I'm Harshal — a passionate full-stack developer who loves to bring ideas to life through clean and scalable code.
+            I am a <AnimatedWord>Full-Stack Developer</AnimatedWord> based in{' '}
+            <AnimatedWord>Pune</AnimatedWord>, India. I am a{' '}
+            <AnimatedWord>Computer Science</AnimatedWord> undergraduate from SPPU. I am passionate
+            about <AnimatedWord>turning ideas</AnimatedWord> into real-world
+            applications through clean and efficient code. I build{' '}
+            <AnimatedWord>cross-platform mobile apps</AnimatedWord> using{' '}
+            <AnimatedWord>Flutter</AnimatedWord> and dynamic WebApps using{' '}
+            <AnimatedWord>Next.js</AnimatedWord> and{' '}
+            <AnimatedWord>Node.js</AnimatedWord> with{' '}
+            <AnimatedWord>MySQL</AnimatedWord>. I’ve also completed a freelance
+            project and constantly work on improving my skills by building
+            meaningful, full-stack applications.
           </Typography>
 
-          <Typography variant="body1">
-            I specialize in crafting responsive web applications using modern JavaScript frameworks like React and Next.js.
-          </Typography>
-
-          <Typography variant="body1">
-            Beyond coding, I enjoy exploring new technologies, contributing to open-source, and building side projects that solve real-world problems.
-          </Typography>
-
-          <Typography variant="body1">
-            In my free time, you'll find me sketching UI ideas, reading tech blogs, or playing chess ♟️.
-          </Typography>
+          <Typography>Email : harshalwadne1978@gmail.com</Typography>
         </Box>
       </Box>
     </Box>

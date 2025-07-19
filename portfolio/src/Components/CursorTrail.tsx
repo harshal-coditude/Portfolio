@@ -2,11 +2,17 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 const CursorTrail = () => {
   const circleRef = useRef<HTMLDivElement>(null);
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // returns true if screen < 600px
+
   useEffect(() => {
+    if (isMobile) return; // Skip setting up the trail on mobile
+
     const circle = circleRef.current;
     if (!circle) return;
 
@@ -16,15 +22,17 @@ const CursorTrail = () => {
     const yTo = gsap.quickTo(circle, 'y', { duration: 0.3, ease: 'power3' });
 
     const move = (e: MouseEvent) => {
-      pos.x = e.clientX + 10; // offset by +10px to right
-      pos.y = e.clientY + 10; // offset by +10px down
+      pos.x = e.clientX + 10;
+      pos.y = e.clientY + 10;
       xTo(pos.x);
       yTo(pos.y);
     };
 
     window.addEventListener('mousemove', move);
     return () => window.removeEventListener('mousemove', move);
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) return null;
 
   return (
     <div

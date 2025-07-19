@@ -10,6 +10,7 @@ import CursorTrail from '../Components/CursorTrail'
 import ClientWrapper from '@/Components/ClientWrapper';
 import { Toaster } from 'react-hot-toast';
 import FloatingParticlesBackground from '@/Components/FloatingParticle';
+import { Box } from '@mui/material';
 
 
 
@@ -24,13 +25,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="bg-white text-black">
-
-        <ClientWrapper/>
-        <Toaster />
-        <CursorTrail />
         <Header />
-        <FloatingParticlesBackground />
-        <main className="min-h-screen max-w-6xl mx-auto p-4">{children}</main>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          {/* <ClientWrapper />
+          <Toaster /> */}
+          <CursorTrail />
+          <FloatingParticlesBackground />
+          <main className="min-h-screen p-4">{children}</main>
+        </div>
         <Footer />
       </body>
     </html>
